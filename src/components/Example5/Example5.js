@@ -31,7 +31,7 @@ const Example5 = props => {
   /**
    * Referential equality check problems solved with Immutable
    */
-  console.log("arr === arr2 :", arr === List([1, 2, 3])); // This will give you `false`
+  console.log("arr === arr2:", arr === arr2); // This will give you `false`
   console.log("arr.equals(arr2) :", arr.equals(arr2)); // This will give you `true`
 
   /**
@@ -44,7 +44,9 @@ const Example5 = props => {
   /**
    * A function to demonstrate referential equality check problems in JS.
    *
-   * The new `values` will be the same `[1, 2, 3]` but still not equal with the old `values`,
+   * The new `values` will be the same `[1, 2, 3]` but still not equal with the old `values`.
+   *
+   * `setValue()` isn't built with Immutable so it doesn't matter if `arr2` is a plain JS `array` or an Immutable `List`
    */
   const changeValues = props => {
     setValues(arr2);
@@ -54,6 +56,8 @@ const Example5 = props => {
    * Setting the document title is a side effect in terms of Functional Reactive Programming.
    *
    * `useEffect` is an async container to manage the change of the document title.
+   *
+   * - https://github.com/facebook/react/issues/15154
    */
   useEffect(() => {
     document.title = `Values: ${JSON.stringify(values)}`;
@@ -63,16 +67,10 @@ const Example5 = props => {
   return (
     <div className="Example5">
       <h3>Example5</h3>
-      <p>Referential equality check with an array.</p>
+      <p>Referential equality check with array and Immutable.js</p>
       <p>
-        This is tricky because:{" "}
-        <code> const arr = [1, 2, 3]; arr === [1, 2, 3] // false</code>
-      </p>
-      <p>
-        Therefore on click (
-        <code>const arr2 = [1, 2, 3]; setValues(arr2);</code>) the document
-        title and `Values: [1, 2, 3]` won't change yet the change function is
-        executed inside `useEffect`.
+        Even if the arrays are set using Immutable.js the `useState` and
+        `useEffect` still uses plain JS so the equality checks will fail.
       </p>
       <p>Please check the console log.</p>
 

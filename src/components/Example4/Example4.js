@@ -25,12 +25,13 @@ const defaultProps = {
  */
 const Example4 = props => {
   const { arr } = props;
+  const arr2 = [1, 2, 3];
 
   /**
    * Referential equality check problems with JS
    */
   console.log("a:", arr);
-  console.log("a === [1, 2, 3]:", arr === [1, 2, 3]); // This will give you `false`
+  console.log("arr === arr2:", arr === arr2); // This will give you `false`
 
   /**
    * This is a side effect in terms of Functional Reactive Programming.
@@ -45,7 +46,6 @@ const Example4 = props => {
    * The new `values` will be the same `[1, 2, 3]` but still not equal with the old `values`,
    */
   const changeValues = props => {
-    const arr2 = [1, 2, 3];
     setValues(arr2);
   };
 
