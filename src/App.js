@@ -6,6 +6,7 @@ import Example1 from "./components/Example1";
 import Example2 from "./components/Example2";
 import Example3 from "./components/Example3";
 import Example4 from "./components/Example4";
+import Example5 from "./components/Example5";
 
 const App = () => {
   return (
@@ -30,6 +31,11 @@ const App = () => {
             Example4 - Referential equality check: array
           </Link>
         </li>
+        <li>
+          <Link to="/example5">
+            Example5 - Referential equality check: array, Immutable.js
+          </Link>
+        </li>
       </ul>
 
       <Switch>
@@ -44,6 +50,9 @@ const App = () => {
         </Route>
         <Route path="/example4">
           <Example4 />
+        </Route>
+        <Route path="/example5">
+          <Example5 />
         </Route>
         <Route path="/">
           <Home />
