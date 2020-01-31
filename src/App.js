@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Example1 from "./components/Example1";
 import Example2 from "./components/Example2";
 import Example3 from "./components/Example3";
+import Example4 from "./components/Example4";
 
 const App = () => {
   return (
@@ -14,13 +15,20 @@ const App = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/example1">Example1</Link>
+          <Link to="/example1">Example1 - Side effect: counter</Link>
         </li>
         <li>
-          <Link to="/example2">Example2</Link>
+          <Link to="/example2">Example2 - Side effect: document.title </Link>
         </li>
         <li>
-          <Link to="/example3">Example3</Link>
+          <Link to="/example3">
+            Example3 - Referential equality check: simple value
+          </Link>
+        </li>
+        <li>
+          <Link to="/example4">
+            Example4 - Referential equality check: array
+          </Link>
         </li>
       </ul>
 
@@ -33,6 +41,9 @@ const App = () => {
         </Route>
         <Route path="/example3">
           <Example3 />
+        </Route>
+        <Route path="/example4">
+          <Example4 />
         </Route>
         <Route path="/">
           <Home />

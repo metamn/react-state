@@ -1,5 +1,5 @@
 /**
- * The simplest example for referential integrity check using `useEffect`
+ * The simplest example for referential equality check using `useEffect`
  *
  * @see https://reactjs.org/docs/hooks-effect.html
  */
@@ -42,7 +42,7 @@ const Example3 = props => {
     <div className="Example3">
       <h3>Example3</h3>
       <p>
-        The simplest example for referential integrity check using `useEffect`
+        The simplest example for referential equality check using `useEffect`
       </p>
       <p>Please check the console log.</p>
 
