@@ -1,5 +1,5 @@
 /**
- * The simplest example with `useEffect`
+ * The simplest example for referential integrity check using `useEffect`
  *
  * @see https://reactjs.org/docs/hooks-effect.html
  */
@@ -20,7 +20,7 @@ const defaultProps = {};
 /**
  * Displays the component
  */
-const Example2 = props => {
+const Example3 = props => {
   /**
    * Adding the `count` variable is a side effect in terms of Functional Reactive Programming.
    *
@@ -35,13 +35,15 @@ const Example2 = props => {
    */
   useEffect(() => {
     document.title = `You clicked ${count} times`;
-    console.log("This is executed every time the component renders");
-  });
+    console.log("This is executed every time the `count` value is changed.");
+  }, [count]);
 
   return (
-    <div className="Example2">
-      <h3>Example2</h3>
-      <p>The simplest example with `useEffect`</p>
+    <div className="Example3">
+      <h3>Example3</h3>
+      <p>
+        The simplest example for referential integrity check using `useEffect`
+      </p>
       <p>Please check the console log.</p>
 
       <div>
@@ -52,12 +54,22 @@ const Example2 = props => {
         </p>
         <button onClick={() => setCount(count + 1)}>Click me</button>
       </div>
+
+      <div>
+        <p>
+          This button won't increase the counter => won't update the document
+          title
+        </p>
+        <button onClick={() => console.log("Button clicked")}>
+          Click me 2
+        </button>
+      </div>
     </div>
   );
 };
 
-Example2.propTypes = propTypes;
-Example2.defaultProps = defaultProps;
+Example3.propTypes = propTypes;
+Example3.defaultProps = defaultProps;
 
-export default Example2;
-export { propTypes as Example2PropTypes, defaultProps as Example2DefaultProps };
+export default Example3;
+export { propTypes as Example3PropTypes, defaultProps as Example3DefaultProps };

@@ -31,6 +31,7 @@ const Example1 = props => {
   return (
     <div className="Example1">
       <h3>Example1</h3>
+      <p>The simplest example with `useState`</p>
 
       <div>
         <p>You clicked {count} times</p>
