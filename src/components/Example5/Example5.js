@@ -46,7 +46,7 @@ const Example5 = props => {
    *
    * The new `values` will be the same `[1, 2, 3]` but still not equal with the old `values`.
    *
-   * `setValue()` isn't built with Immutable so it doesn't matter if `arr2` is a plain JS `array` or an Immutable `List`
+   * `setValue()` isn't built with Immutable so it doesn't matter if `arr2` is a plain JS `array` or an Immutable `List`. Updating `values` will be performed using JS not Immutable.js so it will always change.
    */
   const changeValues = props => {
     setValues(arr2);
@@ -57,7 +57,10 @@ const Example5 = props => {
    *
    * `useEffect` is an async container to manage the change of the document title.
    *
-   * - https://github.com/facebook/react/issues/15154
+   * `useEffect` cannot have assigned a third party equality checker: https://github.com/facebook/react/issues/15154
+   * Therefore it will do the default JS comparision ( ==== ) instead of Immutable's `equals()`
+   * Which will return the same bad results
+   *
    */
   useEffect(() => {
     document.title = `Values: ${JSON.stringify(values)}`;
